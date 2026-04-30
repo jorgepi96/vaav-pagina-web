@@ -202,3 +202,40 @@
     gap: 8px;
   }
 }
+
+@media (max-width: 768px) {
+  #main-footer { padding-top: 0; }
+
+  .footer-content { padding: 48px 0 0 !important; }
+
+  .footer-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 24px 16px !important;
+    text-align: left !important;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+    text-align: left;
+  }
+
+  .footer-socials { justify-content: flex-start; }
+
+  .footer-col { text-align: left; }
+
+  .footer-col h4 {
+    font-size: 11px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .footer-col ul li { line-height: 1.8 !important; }
+
+  .footer-bottom .container {
+    flex-direction: column !important;
+    gap: 6px;
+    text-align: center;
+    font-size: 12px;
+  }
+}
+
