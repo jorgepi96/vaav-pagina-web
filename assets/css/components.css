@@ -1040,87 +1040,164 @@
   }
 }
 
-@media (max-width: 767px) {
-  .hero-content {
-    grid-template-columns: 1fr;
+@media (max-width: 768px) {
+  /* FIX 3 — Hero mobile compacto */
+  .hero-section {
+    min-height: auto !important;
+    height: auto !important;
+    padding-top: 100px;
+    padding-bottom: 60px;
   }
 
-  .cards-grid {
-    grid-template-columns: 1fr;
+  .hero-content {
+    grid-template-columns: 1fr !important;
+    gap: 30px;
+    text-align: center;
   }
+
+  .hero-text { order: 1; }
+
+  .hero-image {
+    order: 2;
+    max-height: 320px;
+    overflow: hidden;
+    justify-content: center;
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: 12px;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .hero-socials { justify-content: center; }
+
+  h1 {
+    font-size: clamp(32px, 9vw, 46px) !important;
+    line-height: 1.1 !important;
+  }
+
+  /* FIX 4 — Video mobile */
+  .video-section { padding: 50px 20px !important; }
+
+  .video-grid {
+    grid-template-columns: 1fr !important;
+    gap: 30px;
+  }
+
+  .video-player { order: -1; }
+  .video-text { order: 1; }
+
+  .video-wrapper video {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+  }
+
+  .video-text h2 { font-size: 24px; }
+
+  /* FIX 5 — Beneficios mobile */
+  .beneficios-section { padding: 60px 20px !important; }
+
+  .beneficios-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px;
+  }
+
+  .slide img {
+    height: 280px !important;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  /* FIX 6 — Cards mobile */
+  .cards-grid { grid-template-columns: 1fr !important; }
 
   .card-item {
     min-height: 550px !important;
-    background-size: cover !important;
     background-position: 50% 0% !important;
+    background-size: cover !important;
   }
 
   .card-content {
+    padding: 30px 24px !important;
     min-height: 400px;
   }
 
+  .card-content h2 { font-size: 22px !important; }
+
+  /* FIX 7 — Bloque equipo mobile */
   .bloque-grid {
-    grid-template-columns: 1fr;
+    display: flex !important;
+    flex-direction: column !important;
     min-height: auto;
   }
 
-  .bloque-image {
-    min-height: 450px;
-    background-size: contain;
-    background-position: top center;
-    background-repeat: no-repeat;
-    background-color: #f0f0f0;
-    order: -1;
+  .bloque-text {
+    order: 2;
+    padding: 48px 24px !important;
+    min-height: auto !important;
   }
 
-  .bloque-text {
+  .bloque-text h2 { font-size: 24px !important; }
+
+  .bloque-image {
     order: 1;
+    min-height: 420px !important;
+    background-size: contain !important;
+    background-position: top center !important;
+    background-repeat: no-repeat !important;
+    background-color: #f0f0f0 !important;
+    width: 100% !important;
   }
+
+  /* FIX 8 — Stats mobile */
+  .stats-section { padding: 60px 20px !important; }
 
   .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0;
   }
 
   .stat-item {
-    border-right: none;
+    border-right: none !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 30px 16px !important;
   }
 
-  .stat-item:nth-child(2n) {
-    border-right: none;
+  .stat-item:nth-child(odd) {
+    border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
   }
 
-  .servicios-grid {
-    grid-template-columns: 1fr;
-  }
+  .stat-item:nth-child(2n) { border-right: none; }
 
-  .beneficios-grid-6 {
-    grid-template-columns: 1fr;
-  }
+  .stat-number { font-size: 38px !important; }
+  .stat-label { font-size: 12px !important; }
 
-  .form-row {
-    grid-template-columns: 1fr;
-  }
+  /* Otros */
+  .servicios-grid { grid-template-columns: 1fr; }
+  .beneficios-grid-6 { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .form-wrapper { padding: 32px 20px; }
+  .valores-grid { grid-template-columns: 1fr; }
+  .pasos-grid { flex-direction: column; align-items: center; }
+  .paso { flex: 0 0 100%; max-width: 300px; }
+}
 
-  .form-wrapper {
-    padding: 32px 20px;
-  }
+@media (max-width: 480px) {
+  .hero-image { display: none; }
 
-  .valores-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .pasos-grid {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .paso {
-    flex: 0 0 100%;
-    max-width: 300px;
-  }
-
-  .bloque-text {
-    padding: 60px 24px;
+  .hero-section {
+    padding-top: 90px;
+    padding-bottom: 40px;
   }
 }

@@ -5,6 +5,14 @@
 (function () {
   'use strict';
 
+  /* ── Fix Safari iOS 100vh ── */
+  function setVhVariable() {
+    var vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', vh + 'px');
+  }
+  setVhVariable();
+  window.addEventListener('resize', setVhVariable, { passive: true });
+
   document.addEventListener('DOMContentLoaded', function () {
 
     const nav = document.getElementById('main-nav');

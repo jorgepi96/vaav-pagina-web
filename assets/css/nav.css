@@ -208,7 +208,7 @@
 /* ─── WhatsApp flotante ──────────────────────────────────────── */
 .whatsapp-float {
   position: fixed;
-  bottom: 28px;
+  bottom: calc(28px + env(safe-area-inset-bottom, 0px));
   right: 28px;
   z-index: 999;
   background: #e83c4b;
@@ -232,6 +232,20 @@
   width: 28px;
   height: 28px;
   fill: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .whatsapp-float {
+    bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+    right: 20px;
+    width: 48px;
+    height: 48px;
+  }
+
+  .whatsapp-float svg {
+    width: 24px;
+    height: 24px;
+  }
 }
 
 /* ─── Responsive ─────────────────────────────────────────────── */

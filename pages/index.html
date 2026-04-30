@@ -332,8 +332,15 @@
 <script src="../assets/js/whatsapp.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    new VAAVParticles('hero-particles', { count: 120, speedMult: 1 }).init();
-    new VAAVParticles('footer-particles', { count: 60, speedMult: 0.5 }).init();
+    var isMobile = window.innerWidth <= 768;
+    new VAAVParticles('hero-particles', {
+      count: isMobile ? 40 : 120,
+      speedMult: isMobile ? 0.6 : 1
+    }).init();
+    new VAAVParticles('footer-particles', {
+      count: isMobile ? 20 : 60,
+      speedMult: isMobile ? 0.3 : 0.5
+    }).init();
   });
 </script>
 </body>
