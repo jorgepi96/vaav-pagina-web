@@ -4,17 +4,218 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Conócenos | VAAV Asesores Patrimoniales</title>
+  <meta name="description" content="Conoce al equipo de VAAV Asesores Patrimoniales. Nuestra historia, misión, visión y los profesionales que trabajan para proteger tu futuro financiero.">
+  <meta name="keywords" content="VAAV asesores, quiénes somos, equipo, misión, visión, asesores patrimoniales México">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/global.css">
   <link rel="stylesheet" href="../assets/css/nav.css">
   <link rel="stylesheet" href="../assets/css/footer.css">
   <link rel="stylesheet" href="../assets/css/components.css">
+<style>
+/* ============================================
+   MOBILE FIXES - VAAV
+   ============================================ */
+@media (max-width: 768px) {
+  /* HERO */
+  .hero-section { min-height: auto !important; height: auto !important; padding-top: 90px !important; padding-bottom: 40px !important; }
+  .hero-content { display: flex !important; flex-direction: column !important; grid-template-columns: unset !important; gap: 24px !important; text-align: center !important; }
+  .hero-text { order: 1 !important; }
+  .hero-image { order: 2 !important; max-height: 280px !important; overflow: hidden !important; border-radius: 12px !important; }
+  .hero-image img { width: 100% !important; height: 280px !important; object-fit: cover !important; object-position: top center !important; }
+  .hero-buttons { justify-content: center !important; flex-wrap: wrap !important; gap: 12px !important; }
+  .hero-socials { justify-content: center !important; }
+  .hero-divider { margin: 16px auto !important; }
+
+  /* VIDEO */
+  .video-section { padding: 40px 20px !important; }
+  .video-grid { display: flex !important; flex-direction: column !important; grid-template-columns: unset !important; gap: 24px !important; }
+  .video-player { order: 1 !important; }
+  .video-text { order: 2 !important; }
+  .video-wrapper video { width: 100% !important; height: auto !important; aspect-ratio: 16 / 9 !important; border-radius: 12px !important; display: block !important; }
+  .video-text h2 { font-size: 22px !important; line-height: 1.3 !important; }
+  .check-list li { font-size: 14px !important; }
+
+  /* BENEFICIOS */
+  .beneficios-section { padding: 50px 20px !important; }
+  .beneficios-grid { display: flex !important; flex-direction: column !important; grid-template-columns: unset !important; gap: 32px !important; }
+  .beneficios-slider { display: block !important; order: 2 !important; }
+  .beneficios-content { order: 1 !important; }
+  .slide img { height: 220px !important; object-fit: cover !important; border-radius: 12px !important; }
+
+  /* CARDS */
+  .cards-grid { display: flex !important; flex-direction: column !important; grid-template-columns: unset !important; }
+  .card-item { min-height: 500px !important; background-size: 105% !important; background-position: center 8% !important; }
+  .card-content { padding: 30px 24px !important; }
+  .card-content h2 { font-size: 22px !important; }
+
+  /* BLOQUE EQUIPO */
+  .bloque-grid { display: flex !important; flex-direction: column !important; grid-template-columns: unset !important; }
+  .bloque-text { order: 2 !important; padding: 48px 24px !important; min-height: auto !important; }
+  .bloque-text h2 { font-size: 22px !important; }
+  .bloque-image { order: 1 !important; min-height: 420px !important; background-size: contain !important; background-position: top center !important; background-repeat: no-repeat !important; background-color: #f0f0f0 !important; width: 100% !important; }
+
+  /* STATS */
+  .stats-section { padding: 50px 20px !important; }
+  .stats-grid { grid-template-columns: 1fr 1fr !important; gap: 0 !important; }
+  .stat-item { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.08) !important; padding: 28px 16px !important; }
+  .stat-item:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.08) !important; }
+  .stat-number { font-size: 36px !important; }
+  .stat-label { font-size: 12px !important; }
+
+  /* CONOCENOS PAGE */
+  .historia-grid { display: flex !important; flex-direction: column !important; gap: 32px !important; }
+  .mvv-grid { grid-template-columns: 1fr !important; }
+  .equipo-grid { grid-template-columns: 1fr 1fr !important; gap: 16px !important; }
+  .historia-img img { width: 100% !important; }
+
+  /* FOOTER */
+  #main-footer { padding-top: 48px !important; }
+  .footer-grid { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 24px 16px !important; }
+  .footer-brand { grid-column: 1 / -1 !important; }
+  .footer-socials { justify-content: flex-start !important; }
+  .footer-bottom .container { flex-direction: column !important; gap: 6px !important; text-align: center !important; font-size: 12px !important; }
+
+  /* WHATSAPP */
+  .whatsapp-float { bottom: calc(20px + env(safe-area-inset-bottom)) !important; right: 20px !important; width: 48px !important; height: 48px !important; }
+
+  /* OVERFLOW */
+  html, body { overflow-x: hidden !important; width: 100% !important; }
+  section { overflow: hidden !important; }
+}
+
+@media (max-width: 480px) {
+  .hero-image { display: none !important; }
+  .hero-section { padding-top: 90px !important; padding-bottom: 30px !important; }
+  h1 { font-size: clamp(30px, 9vw, 44px) !important; line-height: 1.1 !important; }
+  .equipo-grid { grid-template-columns: 1fr !important; }
+}
+
+/* ── Estilos propios de Conócenos ── */
+.page-hero {
+  position: relative;
+  background-image: url('../assets/Images/card-conocenos.png');
+  background-size: cover;
+  background-position: center 8%;
+  padding: 160px 0 80px;
+  text-align: center;
+  overflow: hidden;
+}
+.page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(13,13,26,0.78);
+}
+.page-hero .container { position: relative; z-index: 1; }
+.page-hero .section-label { margin-bottom: 16px; }
+.page-hero h1 { color: #fff; margin-bottom: 16px; }
+.page-hero p { color: rgba(255,255,255,0.65); font-size: 18px; max-width: 520px; margin: 0 auto; }
+
+/* Historia */
+.historia-section { padding: 100px 0; background: #fff; }
+.historia-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.historia-text .section-label { margin-bottom: 12px; }
+.historia-text h2 { color: #2d2d2d; margin-bottom: 20px; }
+.historia-text p { color: #555; line-height: 1.8; margin-bottom: 16px; }
+.historia-text .btn-primary { margin-top: 12px; }
+.historia-img img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 16px 48px rgba(13,13,26,0.12);
+  display: block;
+}
+
+/* Misión Visión Valores */
+.mvv-section { padding: 100px 0; background: #13131f; }
+.mvv-section .section-header { text-align: center; margin-bottom: 60px; }
+.mvv-section .section-header h2 { color: #fff; margin-top: 12px; }
+.mvv-section .section-header p { color: rgba(255,255,255,0.55); max-width: 520px; margin: 12px auto 0; }
+.mvv-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+.mvv-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 40px 32px;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+.mvv-card:hover {
+  border-color: rgba(232,60,75,0.4);
+  transform: translateY(-4px);
+}
+.mvv-icon {
+  width: 48px; height: 48px;
+  background: rgba(232,60,75,0.1);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px;
+}
+.mvv-icon svg { width: 24px; height: 24px; stroke: #e83c4b; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.mvv-card h3 { color: #fff; font-size: 20px; font-weight: 600; margin-bottom: 12px; }
+.mvv-card p { color: rgba(255,255,255,0.65); line-height: 1.8; font-size: 15px; }
+
+/* Equipo */
+.equipo-section { padding: 100px 0; background: #fff; }
+.equipo-section .section-header { text-align: center; margin-bottom: 60px; }
+.equipo-section .section-header h2 { color: #2d2d2d; margin-top: 12px; }
+.equipo-section .section-header p { color: #777; max-width: 480px; margin: 12px auto 0; font-size: 16px; }
+.equipo-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; }
+.equipo-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 16px;
+  padding: 40px 24px 32px;
+  text-align: center;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.equipo-card:hover {
+  box-shadow: 0 8px 32px rgba(232,60,75,0.1);
+  transform: translateY(-4px);
+}
+.equipo-foto {
+  width: 100px; height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #e83c4b;
+  margin: 0 auto 16px;
+  display: block;
+}
+.equipo-initials {
+  width: 100px; height: 100px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 28px; font-weight: 700;
+  margin: 0 auto 16px;
+}
+.equipo-card h3 { font-size: 18px; font-weight: 700; color: #2d2d2d; margin-bottom: 4px; }
+.equipo-card .cargo { font-size: 12px; color: #e83c4b; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; display: block; }
+.equipo-card p { font-size: 14px; color: #666; line-height: 1.7; }
+
+/* CTA final */
+.cta-section { padding: 80px 24px; background: #e83c4b; text-align: center; }
+.cta-section h2 { color: #fff; margin-bottom: 16px; }
+.cta-section p { color: rgba(255,255,255,0.88); font-size: 17px; margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+.cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.btn-white { display: inline-flex; align-items: center; justify-content: center; background: #fff; color: #e83c4b; border: 2px solid #fff; border-radius: 4px; padding: 14px 32px; font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 600; transition: background 0.3s ease, transform 0.3s ease; cursor: pointer; }
+.btn-white:hover { background: rgba(255,255,255,0.9); transform: translateY(-2px); }
+</style>
 </head>
 <body>
+
+<!-- NAV -->
 <nav id="main-nav">
   <div class="container">
-    <a href="index.html" class="nav-logo"><span class="logo-vaav">VAAV</span><span class="logo-sub">Asesores Patrimoniales</span></a>
+    <a href="index.html" class="nav-logo">
+      <span class="logo-vaav">VAAV</span>
+      <span class="logo-sub">Asesores Patrimoniales</span>
+    </a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="conocenos.html" class="active">Conócenos</a></li>
@@ -23,14 +224,17 @@
       <li><a href="ebooks.html">eBooks</a></li>
     </ul>
     <a href="contacto.html" class="btn-outline-white nav-cta">Contacto</a>
-    <button class="hamburger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+    <button class="hamburger" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
 <div class="mobile-menu-overlay"></div>
 <div class="mobile-menu">
   <ul>
     <li><a href="index.html">Home</a></li>
-    <li><a href="conocenos.html">Conócenos</a></li>
+    <li><a href="conocenos.html" class="active">Conócenos</a></li>
     <li><a href="unete.html">Únete a VAAV</a></li>
     <li><a href="servicios.html">Servicios</a></li>
     <li><a href="ebooks.html">eBooks</a></li>
@@ -38,34 +242,192 @@
   <a href="contacto.html" class="btn-primary">Contacto</a>
 </div>
 
-<section style="min-height:100vh; background:#0d0d1a; display:flex; align-items:center; justify-content:center; flex-direction:column; text-align:center; padding:100px 24px;">
-  <span class="section-label">VAAV · ASESORES PATRIMONIALES</span>
-  <h1 style="color:#fff; margin:16px 0 20px;">Conócenos</h1>
-  <p style="color:rgba(255,255,255,0.55); font-size:18px; max-width:480px;">Esta página está en construcción. Vuelve pronto.</p>
-  <a href="index.html" class="btn-primary" style="margin-top:32px;">← Volver al inicio</a>
+<!-- SECCIÓN 1 — Hero pequeño -->
+<section class="page-hero">
+  <div class="container">
+    <span class="section-label animate-on-scroll stagger-1">QUIÉNES SOMOS</span>
+    <h1 class="animate-on-scroll stagger-2">Conoce a VAAV</h1>
+    <p class="animate-on-scroll stagger-3">Un equipo apasionado por proteger tu futuro financiero.</p>
+  </div>
 </section>
 
+<!-- SECCIÓN 2 — Nuestra historia -->
+<section class="historia-section">
+  <div class="container">
+    <div class="historia-grid">
+      <div class="historia-text animate-on-scroll fadeInLeft">
+        <span class="section-label">NUESTRA HISTORIA</span>
+        <h2>Decididos a hacer la diferencia.</h2>
+        <p>En VAAV somos un grupo de personas emprendedoras, talentosas y apasionadas por ayudar a los demás a tomar las mejores decisiones para su futuro.</p>
+        <p>Nacimos con la misión de democratizar el acceso a la asesoría patrimonial profesional en México, llevando estrategias financieras de alto nivel a todas las familias.</p>
+        <a href="unete.html" class="btn-primary">Únete al equipo</a>
+      </div>
+      <div class="historia-img animate-on-scroll fadeInRight">
+        <img src="../assets/Images/slider-1.png" alt="Historia VAAV Asesores Patrimoniales" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECCIÓN 3 — Misión, Visión, Valores -->
+<section class="mvv-section">
+  <div class="container">
+    <div class="section-header animate-on-scroll">
+      <span class="section-label">NUESTRO PROPÓSITO</span>
+      <h2>Lo que nos mueve cada día</h2>
+      <p>Principios sólidos que guían cada asesoría, cada decisión y cada relación con nuestros clientes.</p>
+    </div>
+    <div class="mvv-grid">
+      <div class="mvv-card animate-on-scroll stagger-1">
+        <div class="mvv-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+        </div>
+        <h3>Nuestra Misión</h3>
+        <p>Ayudar a las familias mexicanas a construir un patrimonio sólido mediante asesoría financiera personalizada, honesta y profesional.</p>
+      </div>
+      <div class="mvv-card animate-on-scroll stagger-2">
+        <div class="mvv-icon">
+          <svg viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <h3>Nuestra Visión</h3>
+        <p>Ser la firma de asesores patrimoniales más confiable y reconocida en México, transformando vidas a través de la educación financiera.</p>
+      </div>
+      <div class="mvv-card animate-on-scroll stagger-3">
+        <div class="mvv-icon">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <h3>Nuestros Valores</h3>
+        <p>Integridad, compromiso, excelencia y pasión son los pilares que guían cada decisión que tomamos junto a nuestros clientes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECCIÓN 4 — Nuestro equipo -->
+<section class="equipo-section">
+  <div class="container">
+    <div class="section-header animate-on-scroll">
+      <span class="section-label">NUESTRO EQUIPO</span>
+      <h2>Las personas detrás de VAAV</h2>
+      <p>Profesionales comprometidos con tu bienestar financiero.</p>
+    </div>
+    <div class="equipo-grid">
+
+      <div class="equipo-card animate-on-scroll stagger-1">
+        <img class="equipo-foto" src="../assets/Images/bloque-equipo.png" alt="Víctor M. Meza - Fundador VAAV" loading="lazy">
+        <h3>Víctor M. Meza</h3>
+        <span class="cargo">Fundador &amp; Director General</span>
+        <p>Más de 9 años de experiencia en asesoría patrimonial y planeación financiera.</p>
+      </div>
+
+      <div class="equipo-card animate-on-scroll stagger-2">
+        <div class="equipo-initials" style="background:#e83c4b; color:#fff;">EA</div>
+        <h3>Equipo VAAV</h3>
+        <span class="cargo">Asesores Certificados</span>
+        <p>Profesionales capacitados para guiarte en cada etapa de tu plan patrimonial.</p>
+      </div>
+
+      <div class="equipo-card animate-on-scroll stagger-3">
+        <div class="equipo-initials" style="background:#13131f; color:#fff; border: 3px solid #e83c4b;">SA</div>
+        <h3>Soporte &amp; Atención</h3>
+        <span class="cargo">Equipo de Servicio al Cliente</span>
+        <p>Siempre disponibles para resolver tus dudas y acompañarte en el proceso.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SECCIÓN 5 — CTA final -->
+<section class="cta-section">
+  <div class="container">
+    <h2 class="animate-on-scroll stagger-1">¿Listo para proteger tu futuro?</h2>
+    <p class="animate-on-scroll stagger-2">Únete al equipo de asesores más apasionados de México.</p>
+    <div class="cta-buttons animate-on-scroll stagger-3">
+      <a href="unete.html" class="btn-outline-white">Únete al equipo</a>
+      <a href="servicios.html" class="btn-white">Nuestros servicios</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer id="main-footer">
   <canvas id="footer-particles"></canvas>
   <div class="footer-content">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <div class="footer-logo"><span class="logo-vaav">VAAV</span><span class="logo-sub">Asesores Patrimoniales</span></div>
+          <div class="footer-logo">
+            <span class="logo-vaav">VAAV</span>
+            <span class="logo-sub">Asesores Patrimoniales</span>
+          </div>
           <p class="footer-tagline">Decididos a proteger tu futuro.</p>
+          <div class="footer-socials">
+            <a href="https://www.facebook.com/VAAVAsesores/" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/vaavasesores/" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#e83c4b" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#e83c4b" stroke="none"/></svg>
+            </a>
+            <a href="https://twitter.com/VAAV_Asesores" target="_blank" rel="noopener" aria-label="Twitter">
+              <svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/company/vaav-asesores/" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="https://www.youtube.com/channel/UCKsOuSeGglWw4KHkIbZyBcA" target="_blank" rel="noopener" aria-label="YouTube">
+              <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#0d0d1a"/></svg>
+            </a>
+          </div>
         </div>
-        <div class="footer-col"><h4>Encuentra</h4><ul><li><a href="index.html">Home</a></li><li><a href="conocenos.html">Conócenos</a></li></ul></div>
-        <div class="footer-col"><h4>Explora</h4><ul><li><a href="unete.html">Únete a VAAV</a></li><li><a href="servicios.html">Servicios</a></li><li><a href="ebooks.html">eBooks</a></li></ul></div>
-        <div class="footer-col"><h4>Te ayudamos</h4><ul><li><a href="contacto.html">Contacto</a></li></ul></div>
+        <div class="footer-col">
+          <h4>Encuentra</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="conocenos.html">Conócenos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Explora</h4>
+          <ul>
+            <li><a href="unete.html">Únete a VAAV</a></li>
+            <li><a href="servicios.html">Servicios</a></li>
+            <li><a href="ebooks.html">eBooks</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Te ayudamos</h4>
+          <ul>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </div>
       </div>
     </div>
-    <div class="footer-bottom"><div class="container"><span>© VAAV 2025</span><span><a href="terminos.html">Términos y Condiciones</a> | <a href="aviso.html">Aviso de Privacidad</a></span></div></div>
+    <div class="footer-bottom">
+      <div class="container">
+        <span>© VAAV 2025</span>
+        <span>
+          <a href="terminos.html">Términos y Condiciones</a> |
+          <a href="aviso.html">Aviso de Privacidad</a>
+        </span>
+      </div>
+    </div>
   </div>
 </footer>
+
 <script src="../assets/js/particles.js"></script>
 <script src="../assets/js/nav.js"></script>
 <script src="../assets/js/animations.js"></script>
 <script src="../assets/js/whatsapp.js"></script>
-<script>document.addEventListener('DOMContentLoaded',function(){new VAAVParticles('footer-particles',{count:60,speedMult:0.5}).init();});</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var isMobile = window.innerWidth <= 768;
+    new VAAVParticles('footer-particles', {
+      count: isMobile ? 20 : 60,
+      speedMult: isMobile ? 0.3 : 0.5
+    }).init();
+  });
+</script>
 </body>
 </html>
