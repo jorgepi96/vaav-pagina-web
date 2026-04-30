@@ -16,6 +16,78 @@
   <link rel="stylesheet" href="assets/css/nav.css">
   <link rel="stylesheet" href="assets/css/footer.css">
   <link rel="stylesheet" href="assets/css/components.css">
+<style>
+/* ============================================
+   MOBILE FIXES - VAAV
+   ============================================ */
+@media (max-width: 768px) {
+  /* HERO */
+  .hero-section { min-height: auto !important; height: auto !important; padding-top: 90px !important; padding-bottom: 40px !important; }
+  .hero-content { display: flex !important; flex-direction: column !important; grid-template-columns: unset !important; gap: 24px !important; text-align: center !important; }
+  .hero-text { order: 1 !important; }
+  .hero-image { order: 2 !important; max-height: 280px !important; overflow: hidden !important; border-radius: 12px !important; }
+  .hero-image img { width: 100% !important; height: 280px !important; object-fit: cover !important; object-position: top center !important; }
+  .hero-buttons { justify-content: center !important; flex-wrap: wrap !important; gap: 12px !important; }
+  .hero-socials { justify-content: center !important; }
+  .hero-divider { margin: 16px auto !important; }
+
+  /* VIDEO */
+  .video-section { padding: 40px 20px !important; }
+  .video-grid { display: flex !important; flex-direction: column !important; grid-template-columns: unset !important; gap: 24px !important; }
+  .video-player { order: 1 !important; }
+  .video-text { order: 2 !important; }
+  .video-wrapper video { width: 100% !important; height: auto !important; aspect-ratio: 16 / 9 !important; border-radius: 12px !important; display: block !important; }
+  .video-text h2 { font-size: 22px !important; line-height: 1.3 !important; }
+  .check-list li { font-size: 14px !important; }
+
+  /* BENEFICIOS */
+  .beneficios-section { padding: 50px 20px !important; }
+  .beneficios-grid { display: flex !important; flex-direction: column !important; grid-template-columns: unset !important; gap: 32px !important; }
+  .beneficios-slider { display: block !important; order: 2 !important; }
+  .beneficios-content { order: 1 !important; }
+  .slide img { height: 220px !important; object-fit: cover !important; border-radius: 12px !important; }
+
+  /* CARDS */
+  .cards-grid { display: flex !important; flex-direction: column !important; grid-template-columns: unset !important; }
+  .card-item { min-height: 500px !important; background-position: 50% 5% !important; background-size: 130% !important; }
+  .card-content { padding: 30px 24px !important; }
+  .card-content h2 { font-size: 22px !important; }
+
+  /* BLOQUE EQUIPO */
+  .bloque-grid { display: flex !important; flex-direction: column !important; grid-template-columns: unset !important; }
+  .bloque-text { order: 2 !important; padding: 48px 24px !important; min-height: auto !important; }
+  .bloque-text h2 { font-size: 22px !important; }
+  .bloque-image { order: 1 !important; min-height: 420px !important; background-size: contain !important; background-position: top center !important; background-repeat: no-repeat !important; background-color: #f0f0f0 !important; width: 100% !important; }
+
+  /* STATS */
+  .stats-section { padding: 50px 20px !important; }
+  .stats-grid { grid-template-columns: 1fr 1fr !important; gap: 0 !important; }
+  .stat-item { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.08) !important; padding: 28px 16px !important; }
+  .stat-item:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.08) !important; }
+  .stat-number { font-size: 36px !important; }
+  .stat-label { font-size: 12px !important; }
+
+  /* FOOTER */
+  #main-footer { padding-top: 48px !important; }
+  .footer-grid { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 24px 16px !important; }
+  .footer-brand { grid-column: 1 / -1 !important; }
+  .footer-socials { justify-content: flex-start !important; }
+  .footer-bottom .container { flex-direction: column !important; gap: 6px !important; text-align: center !important; font-size: 12px !important; }
+
+  /* WHATSAPP */
+  .whatsapp-float { bottom: calc(20px + env(safe-area-inset-bottom)) !important; right: 20px !important; width: 48px !important; height: 48px !important; }
+
+  /* OVERFLOW */
+  html, body { overflow-x: hidden !important; width: 100% !important; }
+  section { overflow: hidden !important; }
+}
+
+@media (max-width: 480px) {
+  .hero-image { display: none !important; }
+  .hero-section { padding-top: 90px !important; padding-bottom: 30px !important; }
+  h1 { font-size: clamp(30px, 9vw, 44px) !important; line-height: 1.1 !important; }
+}
+</style>
 </head>
 <body>
 
