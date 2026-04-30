@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¡Gracias! | VAAV Asesores Patrimoniales</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <link rel="stylesheet" href="../assets/css/nav.css">
+  <link rel="stylesheet" href="../assets/css/footer.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+</head>
+<body>
+<nav id="main-nav">
+  <div class="container">
+    <a href="index.html" class="nav-logo"><span class="logo-vaav">VAAV</span><span class="logo-sub">Asesores Patrimoniales</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="conocenos.html">Conócenos</a></li>
+      <li><a href="unete.html">Únete a VAAV</a></li>
+      <li><a href="servicios.html">Servicios</a></li>
+      <li><a href="ebooks.html">eBooks</a></li>
+    </ul>
+    <a href="contacto.html" class="btn-outline-white nav-cta">Contacto</a>
+    <button class="hamburger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu-overlay"></div>
+<div class="mobile-menu">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="conocenos.html">Conócenos</a></li>
+    <li><a href="unete.html">Únete a VAAV</a></li>
+    <li><a href="servicios.html">Servicios</a></li>
+    <li><a href="ebooks.html">eBooks</a></li>
+  </ul>
+  <a href="contacto.html" class="btn-primary">Contacto</a>
+</div>
+<div class="gracias-page">
+  <canvas id="gracias-particles"></canvas>
+  <div class="gracias-content">
+    <div class="check-container">
+      <svg class="check-svg" viewBox="0 0 52 52">
+        <circle class="check-circle" cx="26" cy="26" r="25"/>
+        <path class="check-tick" d="M14 27l8 8 16-16"/>
+      </svg>
+    </div>
+    <h1>¡Gracias por tu interés!</h1>
+    <p>Uno de nuestros asesores se pondrá en contacto contigo en breve.</p>
+    <a href="index.html" class="btn-primary">Volver al inicio</a>
+  </div>
+</div>
+<script src="../assets/js/particles.js"></script>
+<script src="../assets/js/nav.js"></script>
+<script src="../assets/js/whatsapp.js"></script>
+<script>document.addEventListener('DOMContentLoaded',function(){new VAAVParticles('gracias-particles',{count:40,speedMult:0.5}).init();});</script>
+</body>
+</html>

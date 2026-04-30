@@ -1,0 +1,1126 @@
+/* ============================================================
+   VAAV — components.css
+   Secciones reutilizables: hero, video, beneficios, cards,
+   bloque, stats, formularios, gracias, servicios, unete
+   ============================================================ */
+
+/* ─── HERO ───────────────────────────────────────────────────── */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  background: #0d0d1a;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding-top: 80px;
+}
+
+.hero-section canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 55% 42%;
+  gap: 60px;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 60px;
+}
+
+.hero-text h1 {
+  font-size: 52px;
+  color: #ffffff;
+  font-weight: 700;
+  line-height: 1.15;
+  font-family: 'Montserrat', sans-serif;
+  margin: 12px 0 0;
+}
+
+.hero-subtitle {
+  font-size: 22px;
+  color: rgba(255, 255, 255, 0.65);
+  font-weight: 400;
+  margin-top: 16px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: #e83c4b;
+  margin: 24px 0;
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.6s ease 0.4s;
+}
+
+.hero-divider.animated {
+  transform: scaleX(1);
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.hero-socials {
+  display: flex;
+  gap: 16px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+
+.hero-socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  transition: border-color 0.25s, transform 0.25s;
+}
+
+.hero-socials a:hover {
+  border-color: #e83c4b;
+  transform: scale(1.1);
+}
+
+.hero-socials svg {
+  width: 16px;
+  height: 16px;
+  fill: #fff;
+}
+
+.hero-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-image img {
+  width: 420px;
+  max-width: 100%;
+  height: 580px;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 12px;
+  display: block;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+}
+
+/* ─── VIDEO SECTION ──────────────────────────────────────────── */
+.video-section {
+  background: #13131f;
+  padding: 100px 0;
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: 40% 58%;
+  gap: 60px;
+  align-items: center;
+}
+
+.video-text h2 {
+  color: #ffffff;
+  font-size: 32px;
+  margin: 16px 0 20px;
+}
+
+.video-text p {
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.8;
+}
+
+.check-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.check-list li {
+  color: rgba(255, 255, 255, 0.8);
+  padding: 8px 0 8px 28px;
+  position: relative;
+  font-size: 15px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.check-list li::before {
+  content: '✓';
+  color: #e83c4b;
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+}
+
+.video-wrapper {
+  position: relative;
+}
+
+.video-wrapper video {
+  width: 100%;
+  border-radius: 12px;
+  display: block;
+  box-shadow: 0 20px 60px rgba(232, 60, 75, 0.2);
+}
+
+.video-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border: 2px solid rgba(232, 60, 75, 0.35);
+  border-radius: 16px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ─── BENEFICIOS ─────────────────────────────────────────────── */
+.beneficios-section {
+  background: #ffffff;
+  padding: 100px 0;
+}
+
+.beneficios-grid {
+  display: grid;
+  grid-template-columns: 45% 50%;
+  gap: 60px;
+  align-items: center;
+}
+
+/* Slider */
+.slider-container {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #f5f5f5;
+}
+
+.slide {
+  display: none;
+}
+
+.slide.active {
+  display: block;
+}
+
+.slide img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 16px;
+  transition: opacity 0.5s ease;
+}
+
+.slider-dots {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.dot.active {
+  background: #e83c4b;
+  transform: scale(1.2);
+}
+
+/* Beneficios content */
+.beneficios-content h2 {
+  color: #2d2d2d;
+}
+
+.beneficio-item {
+  display: flex;
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid #f0f0f0;
+  align-items: flex-start;
+}
+
+.beneficio-item:last-of-type {
+  border-bottom: none;
+}
+
+.beneficio-icon {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  background: rgba(232, 60, 75, 0.08);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.beneficio-icon svg {
+  width: 24px;
+  height: 24px;
+  stroke: #e83c4b;
+  fill: none;
+  stroke-width: 2;
+}
+
+.beneficio-item h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2d2d2d;
+  margin: 0 0 6px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.beneficio-item p {
+  font-size: 15px;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.link-cta {
+  color: #e83c4b;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 24px;
+  font-size: 15px;
+  font-family: 'Montserrat', sans-serif;
+  transition: gap 0.3s ease;
+}
+
+.link-cta:hover {
+  gap: 10px;
+}
+
+/* ─── CARDS SECTION ──────────────────────────────────────────── */
+.cards-section {
+  overflow: hidden;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 500px;
+}
+
+.card-item {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.card-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: inherit;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.6s ease;
+  transform: scale(1);
+  z-index: 0;
+}
+
+.card-item:hover::before {
+  transform: scale(1.06);
+}
+
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(13, 13, 26, 0.75), rgba(200, 23, 39, 0.45));
+  z-index: 1;
+}
+
+.card-overlay-dark {
+  background: linear-gradient(135deg, rgba(13, 13, 26, 0.85), rgba(13, 13, 26, 0.45));
+}
+
+.card-content {
+  position: relative;
+  z-index: 2;
+  padding: 60px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+  min-height: 500px;
+}
+
+.card-content h2 {
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 24px;
+}
+
+/* ─── BLOQUE TEXTO + IMAGEN ──────────────────────────────────── */
+.bloque-section {
+  overflow: hidden;
+}
+
+.bloque-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 600px;
+  align-items: stretch;
+}
+
+.bloque-text {
+  background: #e83c4b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 60px;
+  min-height: 500px;
+}
+
+.bloque-text-inner h2 {
+  color: #ffffff;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 32px;
+}
+
+.bloque-image {
+  min-height: 600px;
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+
+/* ─── STATS ──────────────────────────────────────────────────── */
+.stats-section {
+  background: #13131f;
+  padding: 80px 0;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.stat-item {
+  text-align: center;
+  padding: 40px 20px;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.stat-item:last-child {
+  border-right: none;
+}
+
+.stat-number {
+  display: block;
+  font-size: 52px;
+  font-weight: 700;
+  color: #e83c4b;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1;
+  animation: countUp 0.5s ease;
+}
+
+.stat-label {
+  display: block;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 8px;
+  letter-spacing: 1px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* ─── FORMULARIO CONTACTO ────────────────────────────────────── */
+.contact-hero {
+  background: #0d0d1a;
+  padding: 140px 0 80px;
+  text-align: center;
+}
+
+.contact-hero h1 {
+  color: #ffffff;
+}
+
+.contact-hero p {
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 12px;
+  font-size: 18px;
+}
+
+.form-section {
+  background: #ffffff;
+  padding: 80px 0 100px;
+}
+
+.form-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 16px;
+  padding: 60px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  color: #555;
+  font-weight: 500;
+  margin-bottom: 6px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 15px;
+  font-family: 'Open Sans', sans-serif;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+  background: #fff;
+  color: #2d2d2d;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #e83c4b;
+  box-shadow: 0 0 0 3px rgba(232, 60, 75, 0.1);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-check {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin: 16px 0;
+}
+
+.form-check input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  margin-top: 2px;
+  accent-color: #e83c4b;
+  cursor: pointer;
+}
+
+.form-check label {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.form-check label a {
+  color: #e83c4b;
+  text-decoration: underline;
+}
+
+.field-error {
+  display: block;
+  font-size: 12px;
+  color: #e83c4b;
+  margin-top: 4px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.form-group.has-error input,
+.form-group.has-error select,
+.form-group.has-error textarea {
+  border-color: #e83c4b;
+}
+
+/* ─── GRACIAS ────────────────────────────────────────────────── */
+.gracias-page {
+  background: #0d0d1a;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.gracias-page canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.gracias-content {
+  position: relative;
+  z-index: 1;
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.check-container {
+  margin-bottom: 8px;
+}
+
+.check-svg {
+  width: 80px;
+  height: 80px;
+}
+
+.check-circle {
+  stroke: #e83c4b;
+  fill: none;
+  stroke-width: 2;
+  stroke-dasharray: 157;
+  stroke-dashoffset: 157;
+  animation: drawCircle 0.6s ease forwards;
+}
+
+.check-tick {
+  stroke: #ffffff;
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 50;
+  stroke-dashoffset: 50;
+  animation: drawTick 0.4s ease 0.5s forwards;
+}
+
+.gracias-content h1 {
+  color: #ffffff;
+  font-size: 40px;
+  margin: 32px 0 16px;
+}
+
+.gracias-content p {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 18px;
+  max-width: 400px;
+  text-align: center;
+  margin-bottom: 32px;
+  line-height: 1.7;
+}
+
+/* ─── SERVICIOS ──────────────────────────────────────────────── */
+.servicios-hero {
+  background: #0d0d1a;
+  padding: 140px 0 80px;
+  text-align: center;
+}
+
+.servicios-hero h1 {
+  color: #fff;
+}
+
+.servicios-hero p {
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 12px;
+  font-size: 18px;
+}
+
+.servicios-section {
+  background: #f5f5f5;
+  padding: 80px 0 100px;
+}
+
+.servicios-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-top: 16px;
+}
+
+.servicio-card {
+  background: #ffffff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 40px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.servicio-card:hover {
+  box-shadow: 0 8px 40px rgba(232, 60, 75, 0.12);
+  transform: translateY(-4px);
+}
+
+.servicio-icon {
+  width: 56px;
+  height: 56px;
+  background: rgba(232, 60, 75, 0.08);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.servicio-icon svg {
+  width: 24px;
+  height: 24px;
+  stroke: #e83c4b;
+  fill: none;
+  stroke-width: 2;
+}
+
+.servicio-card h3 {
+  font-size: 20px;
+  color: #2d2d2d;
+  margin: 0 0 12px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.servicio-card p {
+  color: #666;
+  line-height: 1.7;
+  margin: 0 0 24px;
+  font-size: 15px;
+}
+
+.servicio-card .link-cta {
+  margin-top: 0;
+}
+
+/* ─── ÚNETE ──────────────────────────────────────────────────── */
+.unete-hero {
+  position: relative;
+  min-height: 70vh;
+  background: #0d0d1a;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding-top: 80px;
+}
+
+.unete-hero canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.unete-hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  width: 100%;
+  padding: 60px 24px;
+}
+
+.unete-hero-content h1 {
+  color: #fff;
+  max-width: 700px;
+  margin: 12px auto;
+}
+
+.unete-hero-content p {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 20px;
+  margin: 16px auto 32px;
+  max-width: 550px;
+}
+
+.beneficios-grid-6 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 16px;
+}
+
+.beneficio-card-6 {
+  background: #fff;
+  border-radius: 12px;
+  padding: 36px 28px;
+  text-align: center;
+  border: 1px solid #eee;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.beneficio-card-6:hover {
+  box-shadow: 0 8px 32px rgba(232, 60, 75, 0.1);
+  transform: translateY(-4px);
+}
+
+.beneficio-card-6 .beneficio-icon {
+  margin: 0 auto 16px;
+  width: 56px;
+  height: 56px;
+}
+
+.beneficio-card-6 h3 {
+  font-size: 17px;
+  color: #2d2d2d;
+  margin-bottom: 8px;
+}
+
+.beneficio-card-6 p {
+  font-size: 14px;
+  color: #777;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Pasos */
+.pasos-section {
+  background: #13131f;
+  padding: 100px 0;
+}
+
+.pasos-section h2 {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.pasos-grid {
+  display: flex;
+  gap: 0;
+  align-items: flex-start;
+  position: relative;
+}
+
+.pasos-grid::before {
+  content: '';
+  position: absolute;
+  top: 28px;
+  left: calc(12.5% + 28px);
+  right: calc(12.5% + 28px);
+  height: 2px;
+  background: rgba(232, 60, 75, 0.3);
+  z-index: 0;
+}
+
+.paso {
+  flex: 1;
+  text-align: center;
+  padding: 0 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.paso-num {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #e83c4b;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+
+.paso h3 {
+  color: #fff;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.paso p {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ─── CONOCENOS ──────────────────────────────────────────────── */
+.conocenos-hero {
+  background: #0d0d1a;
+  padding: 140px 0 80px;
+  text-align: center;
+}
+
+.conocenos-hero h1 {
+  color: #fff;
+}
+
+.conocenos-hero p {
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 12px;
+  font-size: 18px;
+}
+
+.conocenos-section {
+  padding: 80px 0 100px;
+}
+
+.conocenos-intro {
+  display: grid;
+  grid-template-columns: 55% 40%;
+  gap: 60px;
+  align-items: center;
+  margin-bottom: 80px;
+}
+
+.conocenos-intro h2 {
+  color: #2d2d2d;
+  margin-bottom: 20px;
+}
+
+.conocenos-intro p {
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.conocenos-intro img {
+  border-radius: 12px;
+  width: 100%;
+}
+
+.valores-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  padding: 60px 0;
+  border-top: 1px solid #eee;
+}
+
+.valor-card {
+  padding: 32px;
+  border-radius: 12px;
+  background: #f9f9f9;
+  text-align: center;
+}
+
+.valor-card .beneficio-icon {
+  margin: 0 auto 16px;
+}
+
+.valor-card h3 {
+  font-size: 18px;
+  color: #2d2d2d;
+  margin-bottom: 10px;
+}
+
+.valor-card p {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* ─── EBOOKS ─────────────────────────────────────────────────── */
+.ebooks-hero {
+  background: #0d0d1a;
+  padding: 140px 0 80px;
+  text-align: center;
+}
+
+.ebooks-hero h1 {
+  color: #fff;
+}
+
+.ebooks-hero p {
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 12px;
+  font-size: 18px;
+}
+
+.ebooks-section {
+  padding: 80px 0 100px;
+}
+
+.ebooks-coming {
+  text-align: center;
+  padding: 80px 24px;
+  background: #f9f9f9;
+  border-radius: 16px;
+  margin-top: 24px;
+}
+
+.ebooks-coming h2 {
+  color: #2d2d2d;
+  margin-bottom: 16px;
+}
+
+.ebooks-coming p {
+  color: #666;
+  margin-bottom: 32px;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero-image {
+    order: -1;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .hero-buttons,
+  .hero-socials {
+    justify-content: center;
+  }
+
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .video-player {
+    order: -1;
+  }
+
+  .beneficios-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .beneficios-grid-6 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .conocenos-intro {
+    grid-template-columns: 1fr;
+  }
+
+  .valores-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pasos-grid {
+    flex-wrap: wrap;
+  }
+
+  .pasos-grid::before {
+    display: none;
+  }
+
+  .paso {
+    flex: 0 0 50%;
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card-item {
+    min-height: 550px !important;
+    background-size: cover !important;
+    background-position: 50% 10% !important;
+  }
+
+  .card-content {
+    min-height: 400px;
+  }
+
+  .bloque-grid {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .bloque-image {
+    min-height: 450px;
+    background-size: contain;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-color: #f0f0f0;
+    order: -1;
+  }
+
+  .bloque-text {
+    order: 1;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stat-item {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .stat-item:nth-child(2n) {
+    border-right: none;
+  }
+
+  .servicios-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .beneficios-grid-6 {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .form-wrapper {
+    padding: 32px 20px;
+  }
+
+  .valores-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pasos-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .paso {
+    flex: 0 0 100%;
+    max-width: 300px;
+  }
+
+  .bloque-text {
+    padding: 60px 24px;
+  }
+}
