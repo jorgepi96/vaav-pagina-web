@@ -1052,7 +1052,7 @@
   .card-item {
     min-height: 550px !important;
     background-size: cover !important;
-    background-position: 50% 10% !important;
+    background-position: 50% 0% !important;
   }
 
   .card-content {
