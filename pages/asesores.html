@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal Asesores | VAAV Asesores Patrimoniales</title>
+  <meta name="description"
+    content="Portal interno para asesores VAAV. Accede al catálogo de skills y apps del stack AI + IT de VAAV Asesores Patrimoniales.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta property="og:title" content="Portal Asesores | VAAV Asesores Patrimoniales">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <link rel="stylesheet" href="../assets/css/nav.css">
+  <link rel="stylesheet" href="../assets/css/footer.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <style>
+    /* ============================================================
+       PORTAL ASESORES — estilos propios de esta página
+       Reutiliza el sistema de diseño VAAV (global.css)
+       ============================================================ */
+
+    /* ── Hero pequeño (igual patrón que conocenos.html) ── */
+    .page-hero {
+      position: relative;
+      background-image: url('../assets/Images/card-conocenos.png');
+      background-size: cover;
+      background-position: center 8%;
+      padding: 160px 0 80px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(13, 13, 26, 0.82);
+    }
+
+    .page-hero .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .page-hero .section-label {
+      margin-bottom: 16px;
+    }
+
+    .page-hero h1 {
+      color: #fff;
+      margin-bottom: 16px;
+    }
+
+    .page-hero p {
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 18px;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* ── Sección portal (contiene login O dashboard) ── */
+    .portal-section {
+      padding: 80px 0 100px;
+      background: var(--color-bg-light);
+      min-height: 60vh;
+    }
+
+    /* ===== ESTADO 1: LOGIN ===== */
+    .login-wrap {
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    .login-card {
+      background: #fff;
+      border: 1px solid #eee;
+      border-radius: var(--radius-lg);
+      padding: 48px 40px;
+      box-shadow: 0 16px 48px rgba(13, 13, 26, 0.10);
+      text-align: center;
+    }
+
+    .login-card .login-icon {
+      width: 56px;
+      height: 56px;
+      background: rgba(232, 60, 75, 0.1);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+
+    .login-card .login-icon svg {
+      width: 28px;
+      height: 28px;
+      stroke: var(--color-red);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .login-card h2 {
+      font-size: 24px;
+      color: var(--color-text);
+      margin-bottom: 8px;
+    }
+
+    .login-card .login-sub {
+      font-size: 14px;
+      color: #777;
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+
+    .login-field {
+      text-align: left;
+      margin-bottom: 16px;
+    }
+
+    .login-field label {
+      display: block;
+      font-family: var(--font-heading);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 8px;
+    }
+
+    .login-field input {
+      width: 100%;
+      padding: 13px 16px;
+      border: 1.5px solid #d8d8d8;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--color-text);
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .login-field input:focus {
+      outline: none;
+      border-color: var(--color-red);
+      box-shadow: 0 0 0 3px rgba(232, 60, 75, 0.12);
+    }
+
+    .login-card .btn-primary {
+      width: 100%;
+      margin-top: 4px;
+    }
+
+    .login-error {
+      display: none;
+      background: rgba(232, 60, 75, 0.08);
+      border: 1px solid rgba(232, 60, 75, 0.25);
+      color: var(--color-red-dark);
+      font-size: 13px;
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      margin-bottom: 16px;
+    }
+
+    .login-error.show {
+      display: block;
+    }
+
+    .login-foot {
+      margin-top: 22px;
+      font-size: 12px;
+      color: #999;
+      line-height: 1.6;
+    }
+
+    /* ===== ESTADO 2: DASHBOARD ===== */
+    .dashboard-wrap {
+      display: none;
+    }
+
+    .dashboard-wrap.active {
+      display: block;
+    }
+
+    /* Barra superior del dashboard */
+    .dash-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .dash-topbar .dash-welcome {
+      font-family: var(--font-heading);
+      font-size: 15px;
+      color: var(--color-text);
+    }
+
+    .dash-topbar .dash-welcome strong {
+      color: var(--color-red);
+    }
+
+    .dash-logout {
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 600;
+      color: #888;
+      background: #fff;
+      border: 1.5px solid #ddd;
+      border-radius: var(--radius-sm);
+      padding: 9px 18px;
+      transition: all var(--transition);
+    }
+
+    .dash-logout:hover {
+      border-color: var(--color-red);
+      color: var(--color-red);
+    }
+
+    /* Toggle Skills / Apps */
+    .view-toggle {
+      display: inline-flex;
+      background: #fff;
+      border: 1.5px solid #e0e0e0;
+      border-radius: var(--radius-md);
+      padding: 4px;
+      gap: 4px;
+    }
+
+    .view-btn {
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 600;
+      color: #888;
+      padding: 8px 20px;
+      border-radius: var(--radius-sm);
+      transition: all var(--transition);
+    }
+
+    .view-btn:hover {
+      color: var(--color-text);
+    }
+
+    .view-btn.active {
+      background: var(--color-red);
+      color: #fff;
+    }
+
+    /* Controles: búsqueda + chips */
+    .dash-controls {
+      margin-bottom: 20px;
+    }
+
+    .dash-search {
+      width: 100%;
+      padding: 13px 18px;
+      border: 1.5px solid #e0e0e0;
+      border-radius: var(--radius-md);
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--color-text);
+      background: #fff;
+      margin-bottom: 14px;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .dash-search:focus {
+      outline: none;
+      border-color: var(--color-red);
+      box-shadow: 0 0 0 3px rgba(232, 60, 75, 0.12);
+    }
+
+    .dash-search::placeholder {
+      color: #aaa;
+    }
+
+    .chip-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .chip {
+      font-family: var(--font-heading);
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #777;
+      background: #fff;
+      border: 1.5px solid #e0e0e0;
+      border-radius: 999px;
+      padding: 7px 16px;
+      transition: all var(--transition);
+      user-select: none;
+    }
+
+    .chip:hover {
+      border-color: var(--color-gray-blue);
+      color: var(--color-text);
+    }
+
+    .chip.active {
+      background: var(--color-red);
+      border-color: var(--color-red);
+      color: #fff;
+    }
+
+    .dash-stats {
+      font-size: 13px;
+      color: #999;
+      margin: 16px 0 18px;
+    }
+
+    /* Grid de cards */
+    .dash-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 16px;
+      align-items: start;
+    }
+
+    /* Card de skill */
+    .skill-card {
+      background: #fff;
+      border: 1px solid #ececec;
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
+    }
+
+    .skill-card:hover {
+      box-shadow: 0 8px 28px rgba(232, 60, 75, 0.10);
+      transform: translateY(-3px);
+      border-color: rgba(232, 60, 75, 0.3);
+    }
+
+    .skill-tag {
+      display: inline-block;
+      font-family: var(--font-heading);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+      background: rgba(78, 82, 89, 0.08);
+      color: var(--color-dark);
+    }
+
+    .skill-tag.vaav {
+      background: rgba(232, 60, 75, 0.1);
+      color: var(--color-red);
+    }
+
+    .skill-tag.plugin {
+      background: rgba(135, 138, 164, 0.15);
+      color: var(--color-gray-blue);
+    }
+
+    .skill-name {
+      font-family: var(--font-heading);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: 6px;
+      word-break: break-word;
+    }
+
+    .skill-desc {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.65;
+      margin-bottom: 14px;
+    }
+
+    .skill-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn-mini {
+      font-family: var(--font-heading);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      transition: all var(--transition);
+    }
+
+    .btn-mini-primary {
+      background: var(--color-red);
+      color: #fff;
+      border: 1.5px solid var(--color-red);
+    }
+
+    .btn-mini-primary:hover {
+      background: var(--color-red-dark);
+      border-color: var(--color-red-dark);
+    }
+
+    .btn-mini-ghost {
+      background: #fff;
+      color: var(--color-dark);
+      border: 1.5px solid #ddd;
+    }
+
+    .btn-mini-ghost:hover {
+      border-color: var(--color-gray-blue);
+    }
+
+    /* Card de app (más detallada) */
+    .app-card {
+      background: #fff;
+      border: 1px solid #ececec;
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
+    }
+
+    .app-card:hover {
+      box-shadow: 0 8px 28px rgba(232, 60, 75, 0.10);
+      transform: translateY(-3px);
+      border-color: rgba(232, 60, 75, 0.3);
+    }
+
+    .app-type-badge {
+      display: inline-block;
+      font-family: var(--font-heading);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+      background: rgba(78, 82, 89, 0.08);
+      color: var(--color-dark);
+    }
+
+    .app-name {
+      font-family: var(--font-heading);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: 2px;
+    }
+
+    .app-subtitle {
+      font-size: 12px;
+      color: var(--color-gray-blue);
+      margin-bottom: 10px;
+    }
+
+    .app-desc {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.65;
+      margin-bottom: 14px;
+    }
+
+    .app-notes {
+      background: rgba(232, 60, 75, 0.05);
+      border-left: 3px solid var(--color-red);
+      padding: 9px 13px;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 12px;
+      color: #777;
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .app-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .dash-empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 60px 20px;
+      color: #999;
+      font-size: 14px;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .page-hero {
+        padding: 130px 0 60px;
+      }
+
+      .portal-section {
+        padding: 50px 0 70px;
+      }
+
+      .login-card {
+        padding: 36px 26px;
+      }
+
+      .dash-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .dash-topbar {
+        justify-content: center;
+        text-align: center;
+      }
+
+      html,
+      body {
+        overflow-x: hidden !important;
+        width: 100% !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============================================================
+       NAV  — copiado de conocenos.html, sin marcar ningún link activo
+       (el portal no está en el menú principal; es acceso interno)
+       ============================================================ -->
+  <nav id="main-nav">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-vaav">VAAV</span>
+        <span class="logo-sub">Asesores Patrimoniales</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="conocenos.html">Conócenos</a></li>
+        <li><a href="unete.html">Únete a VAAV</a></li>
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="ebooks.html">eBooks</a></li>
+      </ul>
+      <a href="contacto.html" class="btn-outline-white nav-cta">Contacto</a>
+      <button class="hamburger" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu-overlay"></div>
+  <div class="mobile-menu">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="conocenos.html">Conócenos</a></li>
+      <li><a href="unete.html">Únete a VAAV</a></li>
+      <li><a href="servicios.html">Servicios</a></li>
+      <li><a href="ebooks.html">eBooks</a></li>
+    </ul>
+    <a href="contacto.html" class="btn-primary">Contacto</a>
+  </div>
+
+  <!-- ============================================================
+       HERO PEQUEÑO
+       ============================================================ -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-label animate-on-scroll stagger-1">PORTAL INTERNO</span>
+      <h1 class="animate-on-scroll stagger-2">Stack AI + IT VAAV</h1>
+      <p class="animate-on-scroll stagger-3">Skills y apps del oficio. Acceso exclusivo para asesores VAAV.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PORTAL  — contiene los dos estados: login y dashboard
+       ============================================================ -->
+  <section class="portal-section">
+    <div class="container">
+
+      <!-- ===== ESTADO 1: LOGIN ===== -->
+      <div class="login-wrap" id="loginWrap">
+        <div class="login-card animate-on-scroll scaleIn">
+          <div class="login-icon">
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="11" width="18" height="11" rx="2" />
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            </svg>
+          </div>
+          <h2>Acceso Asesores</h2>
+          <p class="login-sub">Ingresa la contraseña del equipo para ver el catálogo de skills y apps VAAV.</p>
+
+          <div class="login-error" id="loginError">Contraseña incorrecta. Inténtalo de nuevo.</div>
+
+          <div class="login-field">
+            <label for="loginPass">Contraseña del equipo</label>
+            <input type="password" id="loginPass" placeholder="••••••••" autocomplete="current-password">
+          </div>
+
+          <button class="btn-primary" id="loginBtn">Entrar al portal</button>
+
+          <p class="login-foot">
+            ¿No tienes la contraseña? Solicítala a tu coordinador VAAV.
+          </p>
+        </div>
+      </div>
+
+      <!-- ===== ESTADO 2: DASHBOARD ===== -->
+      <div class="dashboard-wrap" id="dashboardWrap">
+
+        <div class="dash-topbar">
+          <span class="dash-welcome">Bienvenido al portal <strong>VAAV</strong></span>
+          <div class="view-toggle">
+            <button class="view-btn active" data-view="skills" id="viewSkills">Skills</button>
+            <button class="view-btn" data-view="apps" id="viewApps">Apps VAAV</button>
+          </div>
+          <button class="dash-logout" id="logoutBtn">Cerrar sesión</button>
+        </div>
+
+        <!-- Controles (solo visibles en vista skills) -->
+        <div class="dash-controls" id="dashControls">
+          <input type="text" class="dash-search" id="dashSearch" placeholder="Buscar skill por nombre o descripción…">
+          <div class="chip-row" id="chipRow">
+            <button class="chip active" data-cat="all">Todos</button>
+            <button class="chip" data-cat="vaav">VAAV</button>
+            <button class="chip" data-cat="user">Personal</button>
+            <button class="chip" data-cat="plugin">Plugins</button>
+            <button class="chip" data-cat="system">Sistema</button>
+            <button class="chip" data-cat="builtin">Integrados</button>
+            <button class="chip" data-cat="cmd">Comandos</button>
+          </div>
+        </div>
+
+        <div class="dash-stats" id="dashStats"></div>
+
+        <div class="dash-grid" id="dashGrid"></div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER  — copiado de conocenos.html
+       ============================================================ -->
+  <footer id="main-footer">
+    <canvas id="footer-particles"></canvas>
+    <div class="footer-content">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="footer-logo">
+              <span class="logo-vaav">VAAV</span>
+              <span class="logo-sub">Asesores Patrimoniales</span>
+            </div>
+            <p class="footer-tagline">Decididos a proteger tu futuro.</p>
+            <div class="footer-socials">
+              <a href="https://www.facebook.com/VAAVAsesores/" target="_blank" rel="noopener" aria-label="Facebook">
+                <svg viewBox="0 0 24 24">
+                  <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+                </svg>
+              </a>
+              <a href="https://www.instagram.com/vaavasesores/" target="_blank" rel="noopener" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#e83c4b" stroke-width="2">
+                  <rect x="2" y="2" width="20" height="20" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.5" cy="6.5" r="1" fill="#e83c4b" stroke="none" />
+                </svg>
+              </a>
+              <a href="https://twitter.com/VAAV_Asesores" target="_blank" rel="noopener" aria-label="Twitter">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
+                </svg>
+              </a>
+              <a href="https://www.linkedin.com/company/vaav-asesores/" target="_blank" rel="noopener"
+                aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24">
+                  <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" />
+                  <rect x="2" y="9" width="4" height="12" />
+                  <circle cx="4" cy="4" r="2" />
+                </svg>
+              </a>
+              <a href="https://www.youtube.com/channel/UCKsOuSeGglWw4KHkIbZyBcA" target="_blank" rel="noopener"
+                aria-label="YouTube">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58z" />
+                  <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#0d0d1a" />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h4>Encuentra</h4>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="conocenos.html">Conócenos</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Explora</h4>
+            <ul>
+              <li><a href="unete.html">Únete a VAAV</a></li>
+              <li><a href="servicios.html">Servicios</a></li>
+              <li><a href="ebooks.html">eBooks</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Te ayudamos</h4>
+            <ul>
+              <li><a href="contacto.html">Contacto</a></li>
+              <li><a href="faq.html">FAQ</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="container">
+          <span>© VAAV 2025</span>
+          <span>
+            <a href="terminos.html">Términos y Condiciones</a> |
+            <a href="aviso.html">Aviso de Privacidad</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/particles.js"></script>
+  <script src="../assets/js/nav.js"></script>
+  <script src="../assets/js/animations.js"></script>
+  <script src="../assets/js/whatsapp.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var isMobile = window.innerWidth <= 768;
+      new VAAVParticles('footer-particles', {
+        count: isMobile ? 20 : 60,
+        speedMult: isMobile ? 0.3 : 0.5
+      }).init();
+    });
+  </script>
+
+  <!-- ============================================================
+       LÓGICA DEL PORTAL — login + dashboard + analytics
+       ============================================================ -->
+  <script>
+  (function () {
+    'use strict';
+
+    /* ─────────────────────────────────────────────────────────
+       ⚙️  CONFIGURACIÓN — ajusta estos 3 valores
+       ───────────────────────────────────────────────────────── */
+
+    // 1) Contraseña del equipo. Cámbiala cuando quieras rotar acceso.
+    //    ⚠️ Nota: esto es una "cortina", no una cerradura. Cualquiera que
+    //    abra el código fuente puede verla. Sirve para contenido interno
+    //    no sensible. Para seguridad real haría falta un backend.
+    var TEAM_PASSWORD = 'equipo2024';
+
+    // 2) Webhook de analytics. Pega aquí la URL de tu escenario Make.com
+    //    (o workflow n8n) que recibe los eventos y los manda a Google Sheets.
+    //    Si lo dejas vacío, el tracking simplemente no se dispara (no rompe nada).
+    var ANALYTICS_WEBHOOK = '';  // 🔧 ej: 'https://hook.us1.make.com/xxxxxxxx'
+
+    // 3) Clave de sesión (sessionStorage = se borra al cerrar pestaña)
+    var SESSION_KEY = 'vaav-portal-session';
+
+    /* ─────────────────────────────────────────────────────────
+       DATOS — Skills y Apps (extraídos del dashboard de Vic)
+       ───────────────────────────────────────────────────────── */
+
+    var SEED = [
+      {name:"asesor-acuerdos-reunion-inicial",description:"Follow-up del mismo día post-reunión inicial. Genera mensaje WhatsApp + Email peer-level + briefing interno HTML brandeado con semáforo, pre-acuerdos, suma asegurada VAAV, ángulos Insignia y 3+ preguntas para esbozar oportunidades.",isUserCreated:true},
+      {name:"asesor-meeting-followup",description:"Resumen HTML tipo slide-deck tras reuniones (recruitment, advisory, sales, estrategia). Procesa transcripts o notas y entrega action items con próximos pasos.",isUserCreated:true},
+      {name:"asesor-pre-reunion-inicial",description:"Briefing PRE-cita transversal que se conecta con asesor-acuerdos-reunion-inicial (post). Opener listo, 5 metodologías VAAV, dolores patrimoniales, marco Insignia/Investors.",isUserCreated:true},
+      {name:"asesor-reunion-inicial",description:"Briefing estratégico para la reunión inicial de un asesor VAAV con un prospecto. Opener, 5 metodologías, dolores patrimoniales, marco Insignia/Investors.",isUserCreated:true},
+      {name:"promotor-investors-trust-review",description:"Análisis patrimonial profesional de pólizas e inversiones Investors Trust unit-linked (Evolution, S&P 500, Platinum, etc.). Diagnóstico técnico y mensaje al cliente.",isUserCreated:true},
+      {name:"promotor-linkedin-intel",description:"Análisis estratégico de conversaciones LinkedIn para VAAV. Devuelve Análisis + Recomendación + Próximo Mensaje listos.",isUserCreated:true},
+      {name:"promotor-linkedin-invite",description:"Prospección diaria de 25 leads ITESM en LinkedIn. Clasifica perfiles ALTA/MEDIA/BAJA, intenta invitar ALTA y registra en Sheets vía Make.com.",isUserCreated:true},
+      {name:"promotor-newsletter-vaav",description:"Newsletter semanal VAAV para LinkedIn listo para copiar. Cubre todo el flujo: preguntas previas → entregable con texto, hashtags, prompt de imagen.",isUserCreated:true},
+      {name:"promotor-ln-publications-vaav",description:"Posts automáticos página empresa VAAV: Miércoles institucional, Viernes cultura/reclutamiento, Domingo Oficio del Asesor (vía Make.com).",isUserCreated:true},
+      {name:"promotor-ln-publications-vic",description:"Posts perfil personal Vic Meza: Lunes corto, Martes Patrimoniales (fiscal), Jueves caso real (vía Make.com).",isUserCreated:true},
+      {name:"promotor-presentations-vaav",description:"Presentaciones premium VAAV (Dark Sabri o Light) HTML/PDF: podcast, lead magnets, propuestas, reclutamiento, capacitación. 9 slides 16:9.",isUserCreated:true},
+      {name:"promotor-status-reuniones-ghl",description:"Dashboard interactivo de reuniones GoHighLevel con pipeline, movimiento de etapas y acuerdos recientes.",isUserCreated:true},
+      {name:"promotor-cierre-recluta-vaav",description:"Cierre de reclutamiento VAAV para la 2da reunión (versión nueva). Deck institucional + memo Hormozi. Soporta 3 perfiles (Referidor, Aspirante, Asesor con cédula).",isUserCreated:true},
+      {name:"trilogia-hormozi",description:"Aplica la trilogía Alex Hormozi ($100M Offers/Leads/Money Models) como sistema integrado para diagnosticar VAAV. Distingue captación HNWI vs captación de asesores. Respeta jerarquía Insignia/Investors/BUPA.",isUserCreated:true},
+      {name:"dbs-framework",description:"Framework DBS (Direction, Blueprints, Solutions) para estructurar skills nuevos correctamente. Úsalo junto al skill-creator para mejores resultados.",isUserCreated:true},
+      {name:"humanizer",description:"Quita signos de escritura tipo-IA del texto. Detecta y corrige: simbolismo inflado, lenguaje promocional, análisis -ing superficiales, atribuciones vagas, abuso de em-dash, regla de tres, vocabulario IA, voz pasiva, paralelismos negativos.",isUserCreated:true},
+      {name:"xtrending",description:"Escanea X (Twitter), web y GitHub para señales trending del nicho. Matriz 4 factores + drafts X.",isUserCreated:true},
+      {name:"cold-email",description:"Cold emails B2B y secuencias de follow-up que generan respuestas. Subject lines, opening, body, CTAs, multi-touch.",isUserCreated:true},
+      {name:"copywriting",description:"Escribe o mejora copy de marketing: homepage, landings, pricing, headlines, CTAs, value props.",isUserCreated:true},
+      {name:"ad-creative",description:"Genera, itera y escala ad creative para Facebook, Google, LinkedIn — headlines, descriptions, primary text.",isUserCreated:true},
+      {name:"file-organizer",description:"Organiza archivos y carpetas: detecta duplicados, sugiere estructuras, automatiza cleanup.",isUserCreated:true},
+      {name:"competitive-ads-extractor",description:"Extrae y analiza ads de competidores (Facebook Ad Library, LinkedIn Ads) para inspirar campañas.",isUserCreated:true},
+      {name:"lead-research-assistant",description:"Identifica leads de alta calidad analizando tu negocio, busca empresas objetivo y entrega estrategias.",isUserCreated:true},
+      {name:"brand-guidelines",description:"Aplica colores y tipografía oficial de Anthropic a cualquier artifact.",isUserCreated:false},
+      {name:"canvas-design",description:"Crea arte visual original (.png, .pdf) con filosofía de diseño. Posters, piezas estáticas.",isUserCreated:false},
+      {name:"skill-creator",description:"Crear, editar y medir performance de skills. Evals con análisis de varianza.",isUserCreated:false},
+      {name:"theme-factory",description:"Aplica uno de 10 themes preestablecidos a artifacts, slides, docs, landings.",isUserCreated:false},
+      {name:"web-artifacts-builder",description:"Suite para artifacts HTML elaborados con React, Tailwind, shadcn/ui.",isUserCreated:false},
+      {name:"schedule",description:"Crear tareas programadas que corren on-demand o con intervalo automático."},
+      {name:"setup-cowork",description:"Setup guiado de Cowork: instala plugins según rol, conecta tools, prueba un skill."},
+      {name:"context",description:"Muestra qué está usando tu context window."},
+      {name:"consolidate-memory",description:"Pasada reflexiva sobre memory files: merge duplicados, fix hechos stale, prune index."},
+      {name:"docx",description:"Crear, leer y editar documentos Word (.docx) con formato, headings, TOC, page numbers.",isUserCreated:false},
+      {name:"xlsx",description:"Crear, leer y editar spreadsheets Excel (.xlsx) con fórmulas, charts, limpieza.",isUserCreated:false},
+      {name:"pptx",description:"Crear, leer y editar presentaciones PowerPoint (.pptx) — slides, templates, layouts.",isUserCreated:false},
+      {name:"pdf",description:"Manipular PDFs: extraer texto/tablas, merge, split, watermark, formularios, OCR.",isUserCreated:false},
+      {name:"15-cowork-skills:customize",description:"Muestra cómo personalizar estos skills a tu caso de uso."},
+      {name:"15-cowork-skills:visual-page-builder",description:"Páginas HTML autocontenidas que explican conceptos visualmente."},
+      {name:"15-cowork-skills:budget-dashboard",description:"Dashboard financiero interactivo HTML con sliders, donut chart, proyección 12 meses."},
+      {name:"15-cowork-skills:explainer-graphic",description:"Infografías visuales usando analogías del mundo real."},
+      {name:"15-cowork-skills:contract-reviewer",description:"Revisa contratos y marca lo importante antes de firmar."},
+      {name:"15-cowork-skills:learning-path-generator",description:"Plan estructurado para aprender cualquier skill o tema."},
+      {name:"15-cowork-skills:morning-briefing",description:"Escaneo diario de industria con oportunidades de contenido."},
+      {name:"15-cowork-skills:email-drafter",description:"Escribe emails profesionales: outreach, follow-ups, negociaciones."},
+      {name:"15-cowork-skills:receipt-scanner",description:"Lee PDFs de recibos/facturas, extrae montos y arma reporte de gastos."},
+      {name:"15-cowork-skills:quick-research",description:"Investigación rápida desde múltiples fuentes con reporte limpio."},
+      {name:"15-cowork-skills:difficult-conversation-prep",description:"Prepara conversaciones difíciles con script, talking points, respuestas a objeciones."},
+      {name:"15-cowork-skills:animated-website",description:"Convierte un video en sitio scroll-animation de lujo con parallax."},
+      {name:"15-cowork-skills:invoice-generator",description:"Factura profesional en PDF a partir de pocos datos."},
+      {name:"15-cowork-skills:workflow-visualizer",description:"Mapea cualquier sistema o workflow como diagrama HTML interactivo."},
+      {name:"15-cowork-skills:slide-deck-builder",description:"Slide decks visuales con componentes ricos."},
+      {name:"marketing:content-creation",description:"Draft marketing content: blog posts, social, email newsletters, landings, press releases."},
+      {name:"marketing:email-sequence",description:"Multi-email sequences con copy completo, timing, branching, exit conditions, benchmarks."},
+      {name:"marketing:campaign-plan",description:"Campaign brief: objetivos, audiencia, mensajes, canales, calendario, métricas."},
+      {name:"marketing:competitive-brief",description:"Investiga competidores y compara posicionamiento, gaps, oportunidades."},
+      {name:"marketing:brand-review",description:"Review contenido vs brand voice/style guide, flagea desviaciones por severidad."},
+      {name:"marketing:performance-report",description:"Reporte de performance con métricas, tendencias, recomendaciones priorizadas."},
+      {name:"marketing:seo-audit",description:"Auditoría SEO completa: keywords, on-page, content gaps, técnico, competidores."},
+      {name:"marketing:draft-content",description:"Draft contenido marketing con SEO + opciones de headline + adaptación por canal."},
+      {name:"sales:call-summary",description:"Procesa notas/transcript: action items, follow-up email, resumen interno."},
+      {name:"sales:forecast",description:"Forecast ponderado con best/likely/worst, commit vs upside, gap analysis."},
+      {name:"sales:account-research",description:"Research empresa o persona y entrega intel de ventas accionable."},
+      {name:"sales:call-prep",description:"Prepara llamada con contexto de cuenta, research de asistentes, agenda."},
+      {name:"sales:pipeline-review",description:"Analiza salud del pipeline, prioriza deals, flagea riesgos, plan semanal."},
+      {name:"sales:daily-briefing",description:"Brief de ventas priorizado para arrancar el día."},
+      {name:"sales:competitive-intelligence",description:"Research competidores y battlecard interactivo HTML."},
+      {name:"sales:create-an-asset",description:"Assets de venta tailored (landing, decks, one-pagers) desde tu contexto."},
+      {name:"sales:draft-outreach",description:"Research prospecto y draftea outreach personalizado."},
+      {name:"brand-voice:discover-brand",description:"Busca materiales de marca en Notion, Drive, Confluence, Box, Slack y más."},
+      {name:"brand-voice:guideline-generation",description:"Genera guidelines de marca desde documentos, transcripts o discovery reports."},
+      {name:"brand-voice:brand-voice-enforcement",description:"Aplica brand guidelines a creación de contenido."},
+      {name:"cowork-plugin-management:cowork-plugin-customizer",description:"Personalizar un plugin para tools/workflows específicos."},
+      {name:"cowork-plugin-management:create-cowork-plugin",description:"Crear un plugin nuevo desde cero en sesión de Cowork."},
+      {name:"init",description:"Inicializar un archivo CLAUDE.md nuevo con documentación del codebase.",cmd:true},
+      {name:"review",description:"Revisar un pull request.",cmd:true},
+      {name:"security-review",description:"Security review de los cambios pendientes en la branch actual.",cmd:true}
+    ];
+
+    var APPS = [
+      {
+        id:"crm-asesor-claude",
+        name:"CRM Asesor Claude",
+        subtitle:"Mina de Oro · Mini CRM Asesores",
+        typeLabel:"Drive · Master",
+        description:"App MASTER con generador para crear instancias licenciadas por asesor. Incluye SKILL MAESTRO (análisis estratégico de conversaciones) y MIGRATION_PLAN (roadmap fases 0→3).",
+        url:"https://drive.google.com/drive/folders/1K-BqRhu2O6wpeQ3FAOEEVY6JD-TI4-T4",
+        notes:"Master vive en Stack AI VAAV. Cada asesor con cédula recibe su instancia licenciada (HTML standalone) generada desde el master."
+      },
+      {
+        id:"sumas-aseguradas-consolidadas",
+        name:"Sumas Aseguradas Consolidadas",
+        subtitle:"Life Manager · Google Apps Script",
+        typeLabel:"Google Script",
+        description:"Calculadora consolidada de sumas aseguradas Insignia para el equipo VAAV. Hosted en Google Apps Script (nombre real del proyecto: Life Manager - Pólizas Consolidadas).",
+        url:"https://script.google.com/macros/s/AKfycbw3XUCEeh1YBsbhztdl_R0bqaOc7CNk7neOaItMPM_HPj5hckdbIaNh0y-DZvslEGrzRA/exec",
+        notes:"URL principal = web app live. Contraseña del equipo: equipo2024 — compartir solo con asesores VAAV."
+      },
+      {
+        id:"insurance-calculator",
+        name:"Insurance Calculator",
+        subtitle:"Suma Asegurada Recomendada · Codex",
+        typeLabel:"Codex · Drive",
+        description:"Calculadora de suma asegurada recomendada con fórmula VAAV. Construida con ChatGPT Codex. El HTML está en Drive y también corre local en puerto 8091.",
+        url:"https://drive.google.com/file/d/1ap5UxecIpL3dBJAZdv4tFLitHAeS4aeW/view",
+        notes:"Drive = ver/descargar. Local = ejecutar (requiere Codex corriendo en puerto 8091 en tu Mac)."
+      },
+      {
+        id:"calculadora-imc",
+        name:"Calculadora IMC VAAV",
+        subtitle:"Codex · análisis subscripción",
+        typeLabel:"Codex · Drive",
+        description:"Calculadora de IMC para evaluación de subscripción Insignia. HTML standalone — está en Drive (folder Codex Make AI NO BORRAR) y también copia local en Desktop.",
+        url:"https://drive.google.com/file/d/1v0XC6nJD4jEfgdx0lDK1xVDKefuBhsxt/view",
+        notes:"Drive = ver/abrir desde cualquier compu. Carpeta marcada NO BORRAR — todos los HTMLs Codex viven ahí."
+      }
+    ];
+
+    /* ─────────────────────────────────────────────────────────
+       Clasificación de skills (categoría + tag legible)
+       ───────────────────────────────────────────────────────── */
+
+    function inferCategory(s) {
+      if (s.cmd) return "cmd";
+      if (s.name.indexOf(":") > -1) return "plugin";
+      if (s.name.indexOf("promotor-") === 0 || s.name.indexOf("asesor-") === 0) return "vaav";
+      if (s.isUserCreated === true) return "user";
+      if (s.isUserCreated === false) return "system";
+      return "builtin";
+    }
+
+    function inferTag(s) {
+      if (s.cmd) return "Comando /";
+      if (s.name.indexOf(":") > -1) return "Plugin · " + s.name.split(":")[0];
+      if (s.name.indexOf("promotor-") === 0) return "VAAV · Promotor";
+      if (s.name.indexOf("asesor-") === 0) return "VAAV · Asesor";
+      if (s.isUserCreated === true) return "Personal";
+      if (s.isUserCreated === false) return "Sistema";
+      return "Integrado";
+    }
+
+    function tagClass(cat) {
+      if (cat === "vaav") return "vaav";
+      if (cat === "plugin") return "plugin";
+      return "";
+    }
+
+    var SKILLS = SEED.map(function (s) {
+      return {
+        name: s.name,
+        description: s.description || "",
+        category: inferCategory(s),
+        tag: inferTag(s)
+      };
+    });
+
+    /* ─────────────────────────────────────────────────────────
+       ANALYTICS — dispara un evento al webhook (si está configurado)
+       ───────────────────────────────────────────────────────── */
+
+    function trackEvent(type, itemName) {
+      if (!ANALYTICS_WEBHOOK) return;  // sin webhook = no hace nada
+      var payload = {
+        event: type,                       // 'login' | 'skill_open' | 'app_open' | 'logout'
+        item: itemName || '',
+        timestamp: new Date().toISOString(),
+        page: 'portal-asesores'
+      };
+      try {
+        // keepalive permite que el request sobreviva aunque se navegue
+        fetch(ANALYTICS_WEBHOOK, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+          keepalive: true,
+          mode: 'no-cors'
+        }).catch(function () { /* silencioso: analytics no debe romper la UX */ });
+      } catch (e) { /* noop */ }
+    }
+
+    /* ─────────────────────────────────────────────────────────
+       Referencias al DOM
+       ───────────────────────────────────────────────────────── */
+
+    var loginWrap     = document.getElementById('loginWrap');
+    var dashboardWrap = document.getElementById('dashboardWrap');
+    var loginPass     = document.getElementById('loginPass');
+    var loginBtn      = document.getElementById('loginBtn');
+    var loginError    = document.getElementById('loginError');
+    var logoutBtn     = document.getElementById('logoutBtn');
+    var viewSkills    = document.getElementById('viewSkills');
+    var viewApps      = document.getElementById('viewApps');
+    var dashControls  = document.getElementById('dashControls');
+    var dashSearch    = document.getElementById('dashSearch');
+    var chipRow       = document.getElementById('chipRow');
+    var dashStats     = document.getElementById('dashStats');
+    var dashGrid      = document.getElementById('dashGrid');
+
+    /* Estado de la vista */
+    var state = {
+      view: 'skills',     // 'skills' | 'apps'
+      category: 'all',
+      search: ''
+    };
+
+    /* ─────────────────────────────────────────────────────────
+       LOGIN / LOGOUT
+       ───────────────────────────────────────────────────────── */
+
+    function showDashboard() {
+      loginWrap.style.display = 'none';
+      dashboardWrap.classList.add('active');
+      render();
+    }
+
+    function showLogin() {
+      dashboardWrap.classList.remove('active');
+      loginWrap.style.display = 'block';
+      loginPass.value = '';
+      loginError.classList.remove('show');
+    }
+
+    function attemptLogin() {
+      var val = loginPass.value.trim();
+      if (val === TEAM_PASSWORD) {
+        sessionStorage.setItem(SESSION_KEY, 'ok');
+        loginError.classList.remove('show');
+        trackEvent('login');
+        showDashboard();
+      } else {
+        loginError.classList.add('show');
+        loginPass.value = '';
+        loginPass.focus();
+      }
+    }
+
+    loginBtn.addEventListener('click', attemptLogin);
+    loginPass.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') attemptLogin();
+    });
+
+    logoutBtn.addEventListener('click', function () {
+      trackEvent('logout');
+      sessionStorage.removeItem(SESSION_KEY);
+      showLogin();
+    });
+
+    /* Si ya hay sesión activa en esta pestaña, saltar el login */
+    if (sessionStorage.getItem(SESSION_KEY) === 'ok') {
+      showDashboard();
+    }
+
+    /* ─────────────────────────────────────────────────────────
+       TOGGLE de vista (Skills / Apps)
+       ───────────────────────────────────────────────────────── */
+
+    function setView(view) {
+      state.view = view;
+      viewSkills.classList.toggle('active', view === 'skills');
+      viewApps.classList.toggle('active', view === 'apps');
+      // Los controles de búsqueda/filtro solo aplican a skills
+      dashControls.style.display = (view === 'skills') ? 'block' : 'none';
+      render();
+    }
+
+    viewSkills.addEventListener('click', function () { setView('skills'); });
+    viewApps.addEventListener('click', function () { setView('apps'); });
+
+    /* ─────────────────────────────────────────────────────────
+       FILTROS — chips de categoría + búsqueda
+       ───────────────────────────────────────────────────────── */
+
+    chipRow.addEventListener('click', function (e) {
+      var chip = e.target.closest('.chip');
+      if (!chip) return;
+      chipRow.querySelectorAll('.chip').forEach(function (c) { c.classList.remove('active'); });
+      chip.classList.add('active');
+      state.category = chip.getAttribute('data-cat');
+      render();
+    });
+
+    dashSearch.addEventListener('input', function () {
+      state.search = dashSearch.value.toLowerCase().trim();
+      render();
+    });
+
+    /* ─────────────────────────────────────────────────────────
+       RENDER
+       ───────────────────────────────────────────────────────── */
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function renderSkills() {
+      var list = SKILLS.filter(function (s) {
+        var catOk = (state.category === 'all') || (s.category === state.category);
+        var searchOk = !state.search ||
+          s.name.toLowerCase().indexOf(state.search) > -1 ||
+          s.description.toLowerCase().indexOf(state.search) > -1;
+        return catOk && searchOk;
+      });
+
+      dashStats.textContent = list.length + ' de ' + SKILLS.length + ' skills';
+
+      if (!list.length) {
+        dashGrid.innerHTML = '<div class="dash-empty">No se encontraron skills con esos filtros.</div>';
+        return;
+      }
+
+      dashGrid.innerHTML = list.map(function (s) {
+        return '' +
+          '<div class="skill-card">' +
+            '<span class="skill-tag ' + tagClass(s.category) + '">' + escapeHtml(s.tag) + '</span>' +
+            '<div class="skill-name">' + escapeHtml(s.name) + '</div>' +
+            '<div class="skill-desc">' + escapeHtml(s.description) + '</div>' +
+            '<div class="skill-actions">' +
+              '<button class="btn-mini btn-mini-primary" data-action="copy-skill" data-name="' + escapeHtml(s.name) + '">Copiar nombre</button>' +
+            '</div>' +
+          '</div>';
+      }).join('');
+    }
+
+    function renderApps() {
+      dashStats.textContent = APPS.length + ' apps VAAV';
+
+      dashGrid.innerHTML = APPS.map(function (a) {
+        return '' +
+          '<div class="app-card">' +
+            '<span class="app-type-badge">' + escapeHtml(a.typeLabel) + '</span>' +
+            '<div class="app-name">' + escapeHtml(a.name) + '</div>' +
+            '<div class="app-subtitle">' + escapeHtml(a.subtitle) + '</div>' +
+            '<div class="app-desc">' + escapeHtml(a.description) + '</div>' +
+            (a.notes ? '<div class="app-notes">' + escapeHtml(a.notes) + '</div>' : '') +
+            '<div class="app-actions">' +
+              '<button class="btn-mini btn-mini-primary" data-action="open-app" data-id="' + escapeHtml(a.id) + '" data-url="' + escapeHtml(a.url) + '">Abrir app</button>' +
+            '</div>' +
+          '</div>';
+      }).join('');
+    }
+
+    function render() {
+      if (state.view === 'skills') renderSkills();
+      else renderApps();
+    }
+
+    /* ─────────────────────────────────────────────────────────
+       Acciones de las cards (delegación de eventos)
+       ───────────────────────────────────────────────────────── */
+
+    dashGrid.addEventListener('click', function (e) {
+      var btn = e.target.closest('button[data-action]');
+      if (!btn) return;
+      var action = btn.getAttribute('data-action');
+
+      if (action === 'copy-skill') {
+        var skillName = btn.getAttribute('data-name');
+        // Copiar al portapapeles el nombre del skill (para pegarlo en Claude/Cowork)
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(skillName);
+        }
+        var original = btn.textContent;
+        btn.textContent = '¡Copiado!';
+        setTimeout(function () { btn.textContent = original; }, 1400);
+        trackEvent('skill_open', skillName);
+      }
+
+      if (action === 'open-app') {
+        var appId = btn.getAttribute('data-id');
+        var appUrl = btn.getAttribute('data-url');
+        trackEvent('app_open', appId);
+        window.open(appUrl, '_blank', 'noopener');
+      }
+    });
+
+  })();
+  </script>
+
+</body>
+
+</html>
